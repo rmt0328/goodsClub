@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--保证映射文件的命名空间和mapper接口的全类名保持一致-->
+<mapper namespace="com.atguigu.spzx.user.mapper.UserCollectMapper">
+
+    <insert id="saveUserCollect" parameterType="com.atguigu.spzx.model.entity.user.UserCollect">
+        INSERT INTO user_collect
+            (create_time, update_time, is_deleted, user_id, sku_id)
+        VALUES
+            (
+             #{createTime}, #{updateTime}, #{isDeleted}, #{userId}, #{skuId}
+             )
+    </insert>
+
+<!--    <select id="findUserBrowseHistoryPage" resultType="com.atguigu.spzx.model.entity.user.UserCollect">-->
+<!--        select sku_id, MAX(id) as id, user_id, MAX(create_time) as create_time, MAX(update_time) as update_time, is_deleted-->
+<!--        from user_collect-->
+<!--        where is_deleted = 0 and user_id = #{id}-->
+<!--             group by sku_id-->
+<!--             order by id desc-->
+<!--             limit #{offset}, #{limit};-->
+<!--    </select>-->
+    <select id="findUserBrowseHistoryPage" resultType="com.atguigu.spzx.model.entity.user.UserCollect">
+        select distinct sku_id, MAX(id) as id, user_id, MAX(create_time) as create_time, MAX(update_time) as update_time, is_deleted
+        from user_collect
+        where is_deleted = 0 and user_id = #{id}
+        group by sku_id
+        order by id desc
+    </select>
+
+    <select id="findUserCollectPage" resultType="com.atguigu.spzx.model.entity.user.UserBrowseHistory">
+        select *
+        from user_browse_history
+        where is_deleted = 0 and user_id = #{id}
+        order by id desc
+    </select>
+
+
+</mapper>
