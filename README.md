@@ -4,11 +4,11 @@
 
 ### 1、后台管理系统功能
 
-![image-20230918095531708](D:/%E8%B5%84%E6%96%99/%E5%B0%9A%E4%B8%8A%E7%94%84%E9%80%89/%E8%AF%BE%E4%BB%B6/assets/image-20230918095531708.png)
+![](http://s5316urxq.bkt.clouddn.com/SPZX/1.png)
 
 ### 2、前台用户系统功能
 
-![image-20230918100253882](D:/%E8%B5%84%E6%96%99/%E5%B0%9A%E4%B8%8A%E7%94%84%E9%80%89/%E8%AF%BE%E4%BB%B6/assets/image-20230918100253882.png)
+![](http://s5316urxq.bkt.clouddn.com/SPZX/2.png)
 
 
 
@@ -18,7 +18,7 @@
 
 #### （1）权限相关的表关系
 
-![image-20230918101317508](D:/%E8%B5%84%E6%96%99/%E5%B0%9A%E4%B8%8A%E7%94%84%E9%80%89/%E8%AF%BE%E4%BB%B6/assets/image-20230918101317508.png)
+![](http://s5316urxq.bkt.clouddn.com/SPZX/3.png)
 
 #### （2）商品相关的表关系
 
@@ -46,9 +46,9 @@
 
 ### 3、后端技术
 
-![image-20230918103122032](D:/%E8%B5%84%E6%96%99/%E5%B0%9A%E4%B8%8A%E7%94%84%E9%80%89/%E8%AF%BE%E4%BB%B6/assets/image-20230918103122032.png)
+![](http://s5316urxq.bkt.clouddn.com/SPZX/4.png)
 
-![image-20230918103144461](D:/%E8%B5%84%E6%96%99/%E5%B0%9A%E4%B8%8A%E7%94%84%E9%80%89/%E8%AF%BE%E4%BB%B6/assets/image-20230918103144461.png)
+![](http://s5316urxq.bkt.clouddn.com/SPZX/5.png)
 
 
 ## 三、快速上手
@@ -69,7 +69,7 @@ minio:
 
 3）启动Minio，输入minio.exe server D:\minio\data，账号密码都是minioadmin
 
-![1701490525912](C:\Users\李佳乐\AppData\Roaming\Typora\typora-user-images\1701490525912.png)
+![](http://s5316urxq.bkt.clouddn.com/SPZX/6.png)
 
 ### MySQL 数据库
 
@@ -149,4 +149,4 @@ cloud:
 
 如上配置修改完成之后，分别启动如下模块，后端即可正确运行，如果有报错的话，需要针对报错检查排查原因
 
-![1701493454218](C:\Users\李佳乐\AppData\Roaming\Typora\typora-user-images\1701493454218.png)
+![](http://s5316urxq.bkt.clouddn.com/SPZX/7.png)
