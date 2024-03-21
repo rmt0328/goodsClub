@@ -65,6 +65,14 @@
             <artifactId>common-log</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
+
+        <!--thumbnailator实现图片压缩-->
+        <dependency>
+            <groupId>net.coobird</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>0.4.8</version>
+        </dependency>
     </dependencies>
 
 </project>
