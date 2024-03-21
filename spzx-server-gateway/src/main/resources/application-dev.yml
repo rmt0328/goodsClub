@@ -6,7 +6,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: 127.0.0.1:8848
     gateway:
       discovery:
         locator:
@@ -46,5 +46,5 @@ spring:
   # Redis的相关配置
   data:
     redis:
-      host: 192.168.10.100
+      host: 127.0.0.1
       port: 6379

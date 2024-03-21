@@ -7,17 +7,17 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: localhost:8848
+        server-addr: 127.0.0.1:8848
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.10.100:3306/db_spzx?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://192.168.248.130:3306/db_spzx?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
     username: root
-    password: root
+    password: 030329
   # Redis的相关配置
   data:
     redis:
-      host: 192.168.10.100
+      host: 127.0.0.1
       port: 6379
 
 mybatis:

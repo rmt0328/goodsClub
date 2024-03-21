@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Tag(name = "用户管理接口")
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/admin/system/sysUser")
 public class SysUserController {
 
