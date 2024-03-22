@@ -34,6 +34,7 @@ public class BrandController {
         return Result.build(pageInfo , ResultCodeEnum.SUCCESS) ;
     }
 
+    @Log(title = "品牌添加",businessType = 1,operatorType = OperatorType.MANAGE)
     @Operation(summary = "品牌添加接口")
     @PostMapping("save")
     public Result save(@RequestBody Brand brand) {
