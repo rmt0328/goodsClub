@@ -23,5 +23,10 @@ public class UserLoginAuthInterceptor implements HandlerInterceptor {
         return true ;
 
     }
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        //如果不删 ThreadLocal中用完的信息会有内存泄漏的风险
+       AuthContextUtil.remove();
+    }
 
 }

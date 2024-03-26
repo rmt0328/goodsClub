@@ -1,5 +1,7 @@
 package com.atguigu.spzx.manager.service.impl;
 
+import com.atguigu.spzx.common.es.SkuEsModel;
+import com.atguigu.spzx.manager.mapper.CategoryMapper;
 import com.atguigu.spzx.manager.mapper.ProductDetailsMapper;
 import com.atguigu.spzx.manager.mapper.ProductMapper;
 import com.atguigu.spzx.manager.mapper.ProductSkuMapper;
@@ -8,13 +10,18 @@ import com.atguigu.spzx.model.dto.product.ProductDto;
 import com.atguigu.spzx.model.entity.product.Product;
 import com.atguigu.spzx.model.entity.product.ProductDetails;
 import com.atguigu.spzx.model.entity.product.ProductSku;
+import com.atguigu.spzx.model.vo.common.Result;
+import com.atguigu.spzx.search.service.EsProductService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 //  com.atguigu.spzx.manager.service.impl;
 @Service
@@ -22,6 +29,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductMapper productMapper ;
+
+    @Autowired
+    private EsProductService esProductService;
 
     @Autowired
     private ProductSkuMapper productSkuMapper;
@@ -130,6 +140,7 @@ public class ProductServiceImpl implements ProductService {
         productMapper.updateById(product);
     }
 
+    //商品上下架
     @Override
     public void updateStatus(Long id, Integer status) {
         Product product = new Product();
@@ -140,6 +151,43 @@ public class ProductServiceImpl implements ProductService {
             product.setStatus(-1);
         }
         productMapper.updateById(product);
+
+        List<SkuEsModel> uoProducts = new ArrayList<>();
+        //如果是上架，则查询当前spuid对应的所有sku信息，品牌名字
+        List<ProductSku> skus = productSkuMapper.selectByProductId(id);
+        Product pro = productMapper.selectById(id);
+        //封装每一个sku的信息
+
+        skus.stream().map(sku->{
+            SkuEsModel esModel=new SkuEsModel();
+            //先保存sku中有的
+            esModel.setSkuId(sku.getId());
+            esModel.setProductId(sku.getProductId());
+            esModel.setSkuName(sku.getSkuName());
+            esModel.setThumbImg(sku.getThumbImg());
+            esModel.setSalePrice(sku.getSalePrice());
+            esModel.setSaleNum(sku.getSaleNum());
+            esModel.setStockNum(sku.getStockNum());
+            esModel.setBrandId(pro.getBrandId());
+            esModel.setCategory1Id(pro.getCategory1Id());
+            esModel.setCategory2Id(pro.getCategory2Id());
+            esModel.setCategory3Id(pro.getCategory3Id());
+
+
+            return esModel;
+        }).collect(Collectors.toList());
+
+        //将数据发送给es进行保存
+/*
+        Result r=esProductService.productStatusUp();
+*/
+
+
+
+
+
+
+
     }
 
 }

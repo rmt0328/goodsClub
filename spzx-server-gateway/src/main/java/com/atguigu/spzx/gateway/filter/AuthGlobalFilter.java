@@ -24,12 +24,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Slf4j
-@Component
+@Component //交给spring进行管理
 public class AuthGlobalFilter implements GlobalFilter, Ordered {
 
     @Autowired
     private RedisTemplate<String , String> redisTemplate;
 
+    //路径匹配
     private AntPathMatcher antPathMatcher = new AntPathMatcher();
 
     //过滤器
@@ -57,6 +58,7 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
     }
 
     @Override
+    //表示优先级
     public int getOrder() {
         return 0;
     }

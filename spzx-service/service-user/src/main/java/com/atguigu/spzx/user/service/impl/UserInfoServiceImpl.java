@@ -127,6 +127,7 @@ public class UserInfoServiceImpl implements UserInfoService {
 			throw new GuiguException(ResultCodeEnum.ACCOUNT_STOP);
 		}
 
+		//生成一个token,将token存到redis中，后续访问接口默认将token带到header头访问
 		String token = UUID.randomUUID().toString().replaceAll("-", "");
 		redisTemplate.opsForValue().set("user:spzx:" + token, JSON.toJSONString(userInfo), 30, TimeUnit.DAYS);
 		System.out.println(token);
